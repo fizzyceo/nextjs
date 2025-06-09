@@ -1,10 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 
 interface User {
   name: string;
   email: string;
-  id: any;
+  id: string;
 }
 
 export const metadata = {

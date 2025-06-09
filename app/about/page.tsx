@@ -1,10 +1,7 @@
 "use client";
-import Navbar from "@/Components/Navbar";
 import Image from "next/image";
-import { useState } from "react";
 
 const About = () => {
-  const [test, setTest] = useState("");
   return (
     <div>
       Image:
