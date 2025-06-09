@@ -1,10 +1,14 @@
-interface Props {
+import { Metadata, ResolvingMetadata } from "next";
+
+interface PageProps {
   params: {
     id: string;
   };
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/users/${params.id}`
   );
@@ -19,7 +23,7 @@ export async function generateMetadata({ params }: Props) {
       url: `https://localhost.com/users/${params.id}`,
       images: [
         {
-          url: `https://api.ax  dorable.io/avatars/285/${user.email}.png`,
+          url: `https://api.adorable.io/avatars/285/${user.email}.png`,
           width: 285,
           height: 285,
           alt: user.name,
@@ -29,8 +33,6 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-const User = ({ params }: Props) => {
-  return <div>user number: {params.id}</div>;
-};
-
-export default User;
+export default function UserPage({ params }: PageProps) {
+  return <div>User number: {params.id}</div>;
+}
